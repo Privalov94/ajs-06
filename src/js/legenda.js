@@ -8,8 +8,10 @@ export default function orderByProps(obje, array) {
   });
 
   const temp = [];
-  for (const key of Object.keys(copyObj)) {
-    temp.push({ key, value: copyObj[key] });
+  for (const key in copyObj) {
+    if (Object.prototype.hasOwnProperty.call(copyObj, key)) {
+      temp.push({ key, value: copyObj[key] });
+    }
   }
 
   temp.sort((a, b) => {
